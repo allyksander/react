@@ -1,0 +1,11 @@
+.todo-item {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  &__label {
+    display: flex;
+    align-items: inherit;
+    gap: 8px;
+  }
+}

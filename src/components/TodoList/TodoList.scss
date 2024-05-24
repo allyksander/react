@@ -1,0 +1,15 @@
+.todo-list {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+
+  &__wrap {
+    padding: 24px;
+  }
+
+  &__placeholder {
+    margin: 0;
+    text-align: center;
+  }
+}
