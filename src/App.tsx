@@ -1,11 +1,12 @@
-import { TodoForm } from "@components/TodoForm/TodoForm";
+import { RootPovider } from "./redux/RootPovider/RootPovider";
+import { TodosForm } from "@components/TodosForm/TodosForm";
+import { TodosList } from "@components/TodosList/TodosList";
 import "./index.scss";
-import { TodoList } from "@components/TodoList/TodoList";
 
 export const App = (): JSX.Element => (
-  <>
-    <TodoForm />
+  <RootPovider>
+    <TodosForm />
     <hr />
-    <TodoList />
-  </>
+    <TodosList />
+  </RootPovider>
 );
