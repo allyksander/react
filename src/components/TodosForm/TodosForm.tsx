@@ -1,17 +1,25 @@
 import { FormEvent, useState, ChangeEvent } from "react";
-import { useDispatch } from "react-redux";
-import { ActionTypes } from "@redux/Reducer/todosReducer";
+import { useActions } from "@redux/hooks/useActions";
+import { TodosItem } from "@components/TodosItem/type";
 import "./TodosForm.scss";
 
 export const TodosForm = (): JSX.Element => {
   const [title, setTitle] = useState("");
   const [completed, setCompleted] = useState(false);
-  const dispatch = useDispatch();
+  const { addTodosItem, addTodosItemAsync } = useActions();
 
-  const todosFormSubmit = (e: FormEvent): void => {
+  const getNewTodoData = (): TodosItem => {
+    return {
+      id: Date.now().toString(),
+      title: title === "" ? "No name" : title,
+      completed,
+    };
+  };
+
+  const addTodosItemDefault = (e: FormEvent): void => {
     e.preventDefault();
 
-    addTodo();
+    addTodosItem(getNewTodoData());
     resetTitle();
     resetCompleted();
   };
@@ -26,19 +34,8 @@ export const TodosForm = (): JSX.Element => {
 
   const resetCompleted = (): void => setCompleted(false);
 
-  const addTodo = (): void => {
-    dispatch({
-      type: ActionTypes.ADD,
-      payload: {
-        id: Date.now(),
-        title,
-        completed,
-      },
-    });
-  };
-
   return (
-    <form action="" className="todos-form" onSubmit={todosFormSubmit}>
+    <div className="todos-form">
       <label className="todos-form__item">
         <input
           type="text"
@@ -58,9 +55,22 @@ export const TodosForm = (): JSX.Element => {
         />
         <span>Completed</span>
       </label>
-      <button type="submit" className="todos-form__button">
+      <button
+        type="submit"
+        className="todos-form__button"
+        onClick={addTodosItemDefault}
+      >
         Add todo
       </button>
-    </form>
+      <button
+        type="button"
+        className="todos-form__button"
+        onClick={() => {
+          addTodosItemAsync(getNewTodoData());
+        }}
+      >
+        Add todo async
+      </button>
+    </div>
   );
 };
