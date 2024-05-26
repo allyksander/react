@@ -1,21 +1,39 @@
 import { Dispatch } from "redux";
 import { TodosItem } from "@components/TodosItem/type";
-import { ActionTypes, TodosAction } from "./types";
+import { ActionTypes, TodosAction, TodosState } from "./types";
 
-export const todosReducer = (state: TodosItem[] = [], action: TodosAction) => {
+const initialTodosState: TodosState = {
+  todos: [],
+  isLoading: false,
+};
+
+export const todosReducer = (
+  state: TodosState = initialTodosState,
+  action: TodosAction
+) => {
+  const { todos } = state;
   const { type, payload } = action;
 
   switch (type) {
     case ActionTypes.ADD:
-      return [...state, payload];
+      return { ...state, todos: [...todos, payload] };
 
     case ActionTypes.REMOVE:
-      return state.filter(({ id }) => id !== payload);
+      return { ...state, todos: todos.filter(({ id }) => id !== payload) };
 
     case ActionTypes.UPDATE:
-      return state.map((item) =>
-        item.id === payload ? { ...item, completed: !item.completed } : item
-      );
+      return {
+        ...state,
+        todos: todos.map((item) =>
+          item.id === payload ? { ...item, completed: !item.completed } : item
+        ),
+      };
+
+    case ActionTypes.LOADING:
+      return {
+        ...state,
+        isLoading: payload,
+      };
 
     default:
       return state;
@@ -36,7 +54,9 @@ export const updateTodosItem =
 
 export const addTodosItemAsync =
   (payload: TodosItem) => async (dispatch: Dispatch<TodosAction>) => {
+    dispatch({ type: ActionTypes.LOADING, payload: true });
     await new Promise((resolve) => setTimeout(() => resolve(""), 2000));
+    dispatch({ type: ActionTypes.LOADING, payload: false });
 
     return dispatch({ type: ActionTypes.ADD, payload });
   };

@@ -9,6 +9,7 @@ export enum ActionTypes {
   ADD = "todos/add",
   REMOVE = "todos/remove",
   UPDATE = "todos/update",
+  LOADING = "todos/loading",
 }
 
 type TodosAdd = {
@@ -26,4 +27,9 @@ type TodosUpdate = {
   payload: string;
 };
 
-export type TodosAction = TodosAdd | TodosRemove | TodosUpdate;
+type TodosLoading = {
+  type: ActionTypes.LOADING;
+  payload: boolean;
+};
+
+export type TodosAction = TodosAdd | TodosRemove | TodosUpdate | TodosLoading;

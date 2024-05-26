@@ -3,7 +3,7 @@ import { useSelectorTyped } from "@redux/hooks/useSelectorTyped";
 import "./TodosList.scss";
 
 export const TodosList = (): JSX.Element => {
-  const todoList = useSelectorTyped((state) => state.todos);
+  const todoList = useSelectorTyped((state) => state.todos.todos);
 
   return (
     <div className="todos-list__wrap">

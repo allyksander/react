@@ -1,11 +1,13 @@
-import { FormEvent, useState, ChangeEvent } from "react";
+import { useState, ChangeEvent } from "react";
 import { useActions } from "@redux/hooks/useActions";
 import { TodosItem } from "@components/TodosItem/type";
+import { useSelectorTyped } from "@redux/hooks/useSelectorTyped";
 import "./TodosForm.scss";
 
 export const TodosForm = (): JSX.Element => {
   const [title, setTitle] = useState("");
   const [completed, setCompleted] = useState(false);
+  const isLoading = useSelectorTyped((state) => state.todos.isLoading);
   const { addTodosItem, addTodosItemAsync } = useActions();
 
   const getNewTodoData = (): TodosItem => {
@@ -16,10 +18,8 @@ export const TodosForm = (): JSX.Element => {
     };
   };
 
-  const addTodosItemDefault = (e: FormEvent): void => {
-    e.preventDefault();
-
-    addTodosItem(getNewTodoData());
+  const addTodosItemHandler = (callback: () => void): void => {
+    callback();
     resetTitle();
     resetCompleted();
   };
@@ -58,18 +58,20 @@ export const TodosForm = (): JSX.Element => {
       <button
         type="submit"
         className="todos-form__button"
-        onClick={addTodosItemDefault}
+        onClick={() =>
+          addTodosItemHandler(() => addTodosItem(getNewTodoData()))
+        }
       >
         Add todo
       </button>
       <button
         type="button"
         className="todos-form__button"
-        onClick={() => {
-          addTodosItemAsync(getNewTodoData());
-        }}
+        onClick={() =>
+          addTodosItemHandler(() => addTodosItemAsync(getNewTodoData()))
+        }
       >
-        Add todo async
+        {isLoading ? "Loading" : "Add todo async"}
       </button>
     </div>
   );
