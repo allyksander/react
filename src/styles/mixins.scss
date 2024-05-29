@@ -1,0 +1,13 @@
+@mixin hover() {
+  @media screen and (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin media-desctop {
+  @media (min-width: 769px) {
+    @content;
+  }
+}

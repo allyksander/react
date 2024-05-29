@@ -10,6 +10,9 @@ export default defineConfig({
       "@public": path.resolve(__dirname, "./public"),
       "@assets": path.resolve(__dirname, "./src/assets"),
       "@components": path.resolve(__dirname, "./src/components"),
+      "@constants": path.resolve(__dirname, "./src/constants"),
+      "@pages": path.resolve(__dirname, "./src/pages"),
+      "@styles": path.resolve(__dirname, "./src/styles"),
     },
   },
 });

@@ -1,3 +1,5 @@
+@import "@styles/mixins.scss";
+
 * {
   box-sizing: border-box;
 }
@@ -6,4 +8,65 @@ body {
   margin: 0;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.25;
+  font-size: 14px;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  --app-menu-padding: 16px;
+
+  @include media-desctop {
+    --app-menu-padding: 24px;
+
+    display: grid;
+    grid-template-columns: min-content auto;
+    min-height: 100dvh;
+    font-size: 16px;
+  }
+}
+
+.app-menu {
+  overflow: auto;
+
+  @include media-desctop {
+    max-height: 100dvh;
+  }
+
+  &__list {
+    min-height: 100%;
+    display: flex;
+    gap: 16px;
+
+    @include media-desctop {
+      display: block;
+      border-right: 1px solid lightgray;
+    }
+  }
+
+  &__link {
+    display: block;
+    padding: var(--app-menu-padding);
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+
+    &.active {
+      pointer-events: none;
+      opacity: 0.5;
+      text-decoration: underline;
+    }
+
+    @include hover {
+      transform: translateX(5px);
+    }
+  }
+}
+
+.app-container {
+  padding: var(--app-menu-padding);
 }
