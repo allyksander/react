@@ -1,1 +1,18 @@
-export const Comments = () => <span>Comments page</span>;
+import { CommentsList } from "@components/Comments/CommentsList/CommentsList";
+
+export const Comments = () => (
+  <>
+    <h1>Comments page</h1>
+    <CommentsList
+      commentsList={[
+        {
+          postId: 1,
+          id: 1,
+          name: "id labore ex et quam laborum",
+          email: "Eliseo@gardner.biz",
+          body: "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium",
+        },
+      ]}
+    />
+  </>
+);
