@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import { AppRoutes } from "@constants/routes";
-import { TodosListProps } from "./types";
+import { useGetTodosQuery } from "@redux/api/jsonPlaceholderApi";
 import "./TodosList.scss";
 
-export const TodosList = ({ todosList }: TodosListProps) =>
-  todosList?.length ? (
+export const TodosList = () => {
+  const { data } = useGetTodosQuery();
+
+  return data?.length ? (
     <ul className="todos-list">
-      {todosList.map(({ id, title }) => (
+      {data.map(({ id, title }) => (
         <li className="todos-list__item" key={id}>
           <Link className="link" to={`${AppRoutes.TODOS}/${id}`}>
             <h3>{title}</h3>
@@ -19,3 +21,4 @@ export const TodosList = ({ todosList }: TodosListProps) =>
   ) : (
     <h2>There are no any todos</h2>
   );
+};

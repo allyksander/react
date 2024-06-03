@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import { AppRoutes } from "@constants/routes";
-import { AlbumsListProps } from "./types";
+import { useGetAlbumsQuery } from "@redux/api/jsonPlaceholderApi";
 import "./AlbumsList.scss";
 
-export const AlbumsList = ({ albumsList }: AlbumsListProps) =>
-  albumsList?.length ? (
+export const AlbumsList = () => {
+  const { data } = useGetAlbumsQuery();
+
+  return data?.length ? (
     <ul className="albums-list">
-      {albumsList.map(({ id, title }) => (
+      {data.map(({ id, title }) => (
         <li className="albums-list__item" key={id}>
           <Link className="link" to={`${AppRoutes.ALBUMS}/${id}`}>
             <h3>{title}</h3>
@@ -19,3 +21,4 @@ export const AlbumsList = ({ albumsList }: AlbumsListProps) =>
   ) : (
     <h2>There are no any albums</h2>
   );
+};

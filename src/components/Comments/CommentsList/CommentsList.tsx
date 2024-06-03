@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import { AppRoutes } from "@constants/routes";
-import { CommentsListProps } from "./types";
+import { useGetCommentsQuery } from "@redux/api/jsonPlaceholderApi";
 import "./CommentsList.scss";
 
-export const CommentsList = ({ commentsList }: CommentsListProps) =>
-  commentsList?.length ? (
+export const CommentsList = () => {
+  const { data } = useGetCommentsQuery();
+
+  return data?.length ? (
     <ul className="comments-list">
-      {commentsList.map(({ id, name }) => (
+      {data.map(({ id, name }) => (
         <li className="comments-list__item" key={id}>
           <Link className="link" to={`${AppRoutes.COMMENTS}/${id}`}>
             <h3>{name}</h3>
@@ -19,3 +21,4 @@ export const CommentsList = ({ commentsList }: CommentsListProps) =>
   ) : (
     <h2>There are no any comments</h2>
   );
+};

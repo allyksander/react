@@ -1,16 +1,24 @@
 import { Link } from "react-router-dom";
 import { AppRoutes } from "@constants/routes";
-import { PhotosListProps } from "./types";
 import "./PhotosList.scss";
+import { useGetPhotosQuery } from "@redux/api/jsonPlaceholderApi";
 
-export const PhotosList = ({ photosList }: PhotosListProps) =>
-  photosList?.length ? (
+export const PhotosList = () => {
+  const { data } = useGetPhotosQuery();
+
+  return data?.length ? (
     <ul className="photo-list">
-      {photosList.map(({ id, title, thumbnailUrl }) => (
+      {data.map(({ id, title, thumbnailUrl }) => (
         <li className="photo-list__item" key={id}>
           <Link className="link" to={`${AppRoutes.PHOTOS}/${id}`}>
             <figure>
-              <img src={thumbnailUrl} alt={title} loading="lazy" />
+              <img
+                src={thumbnailUrl}
+                width={150}
+                height={150}
+                alt={title}
+                loading="lazy"
+              />
               <figcaption>
                 <h3>{title}</h3>
               </figcaption>
@@ -24,3 +32,4 @@ export const PhotosList = ({ photosList }: PhotosListProps) =>
   ) : (
     <h2>There are no any photos</h2>
   );
+};

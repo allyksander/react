@@ -19,6 +19,7 @@ ul {
 
 .app {
   --app-menu-padding: 16px;
+  --gray-border: lightgrey;
 
   @include media-desctop {
     --app-menu-padding: 24px;
@@ -32,9 +33,16 @@ ul {
 
 .app-menu {
   overflow: auto;
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid var(--gray-border);
+  background: white;
 
   @include media-desctop {
     max-height: 100dvh;
+    border-right: 1px solid var(--gray-border);
+    border-bottom: none;
+    background: transparent;
   }
 
   &__list {
@@ -44,7 +52,6 @@ ul {
 
     @include media-desctop {
       display: block;
-      border-right: 1px solid lightgray;
     }
   }
 
