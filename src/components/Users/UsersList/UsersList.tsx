@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
 import { AppRoutes } from "@constants/routes";
 import { useGetUsersQuery } from "@redux/api/jsonPlaceholderApi";
+import { Loader } from "@components/Loader/Loader";
 import "./UsersList.scss";
 
 export const UsersList = () => {
-  const { data } = useGetUsersQuery();
+  const { data, isLoading } = useGetUsersQuery();
 
-  return data?.length ? (
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  return Array.isArray(data) ? (
     <ul className="user-list">
       {data.map(({ id, name }) => (
         <li className="user-list__item" key={id}>

@@ -1,14 +1,24 @@
+import { useParams } from "react-router-dom";
+import { useGetPhotosQuery } from "@redux/api/jsonPlaceholderApi";
+import { NotFound } from "@pages/NotFound/NotFound";
 import { Card } from "@components/Card/Card";
-import { PhotoType } from "./types";
+import { Loader } from "@components/Loader/Loader";
+import { getItemFromEndpoint } from "@utils/getItemFromEndpoint";
+import "./PhotoCard.scss";
 
 export const PhotoCard = () => {
-  const { title, url }: PhotoType = {
-    albumId: 1,
-    id: 1,
-    title: "accusamus beatae ad facilis cum similique qui sunt",
-    url: "https://via.placeholder.com/600/92c952",
-    thumbnailUrl: "https://via.placeholder.com/150/92c952",
-  };
+  const { id = "" } = useParams();
+  const { data, isLoading } = useGetPhotosQuery(id);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (!data) {
+    return <NotFound />;
+  }
+
+  const { title, url } = getItemFromEndpoint(data);
 
   return (
     <Card>

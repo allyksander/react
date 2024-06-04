@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
 import { AppRoutes } from "@constants/routes";
 import { useGetPostsQuery } from "@redux/api/jsonPlaceholderApi";
+import { Loader } from "@components/Loader/Loader";
 import "./PostsList.scss";
 
 export const PostsList = () => {
-  const { data } = useGetPostsQuery();
+  const { data, isLoading } = useGetPostsQuery();
 
-  return data?.length ? (
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  return Array.isArray(data) ? (
     <ul className="post-list">
       {data.map(({ id, title }) => (
         <li className="post-list__item" key={id}>

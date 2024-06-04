@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
 import { AppRoutes } from "@constants/routes";
 import { useGetAlbumsQuery } from "@redux/api/jsonPlaceholderApi";
+import { Loader } from "@components/Loader/Loader";
 import "./AlbumsList.scss";
 
 export const AlbumsList = () => {
-  const { data } = useGetAlbumsQuery();
+  const { data, isLoading } = useGetAlbumsQuery();
 
-  return data?.length ? (
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  return Array.isArray(data) ? (
     <ul className="albums-list">
       {data.map(({ id, title }) => (
         <li className="albums-list__item" key={id}>

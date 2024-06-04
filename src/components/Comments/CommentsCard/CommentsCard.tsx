@@ -1,15 +1,24 @@
-import { CommentType } from "./types";
+import { useParams } from "react-router-dom";
+import { useGetCommentsQuery } from "@redux/api/jsonPlaceholderApi";
+import { NotFound } from "@pages/NotFound/NotFound";
+import { Loader } from "@components/Loader/Loader";
 import { Card } from "@components/Card/Card";
+import { getItemFromEndpoint } from "@utils/getItemFromEndpoint";
 import "./CommentsCard.scss";
 
 export const CommentsCard = () => {
-  const { name, email, body }: CommentType = {
-    postId: 1,
-    id: 1,
-    name: "id labore ex et quam laborum",
-    email: "Eliseo@gardner.biz",
-    body: "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium",
-  };
+  const { id = "" } = useParams();
+  const { data, isLoading } = useGetCommentsQuery(id);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (!data) {
+    return <NotFound />;
+  }
+
+  const { name, email, body } = getItemFromEndpoint(data);
 
   return (
     <Card>

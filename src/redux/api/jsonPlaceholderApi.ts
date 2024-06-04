@@ -6,6 +6,7 @@ import { AlbumType } from "@components/Albums/AlbumsCard/types";
 import { PhotoType } from "@components/Photos/PhotoCard/types";
 import { TodosType } from "@components/Todos/TodosCard/types";
 import { UserType } from "@components/Users/UsersCard/types";
+import { getQueryEndpoints } from "@utils/getQueryEndpoints";
 
 export const jsonPlaceholderApi = createApi({
   reducerPath: "jsonPlaceholderApi",
@@ -13,23 +14,23 @@ export const jsonPlaceholderApi = createApi({
     baseUrl: "https://jsonplaceholder.typicode.com/",
   }),
   endpoints: (builder) => ({
-    getPosts: builder.query<PostType[], void>({
-      query: () => AppRoutes.POSTS,
+    getPosts: builder.query<PostType[] | PostType, void | string>({
+      query: (id) => getQueryEndpoints(id, AppRoutes.POSTS),
     }),
-    getComments: builder.query<CommentType[], void>({
-      query: () => AppRoutes.COMMENTS,
+    getComments: builder.query<CommentType[] | CommentType, void | string>({
+      query: (id) => getQueryEndpoints(id, AppRoutes.COMMENTS),
     }),
-    getAlbums: builder.query<AlbumType[], void>({
-      query: () => AppRoutes.ALBUMS,
+    getAlbums: builder.query<AlbumType[] | AlbumType, void | string>({
+      query: (id) => getQueryEndpoints(id, AppRoutes.ALBUMS),
     }),
-    getPhotos: builder.query<PhotoType[], void>({
-      query: () => AppRoutes.PHOTOS,
+    getPhotos: builder.query<PhotoType[] | PhotoType, void | string>({
+      query: (id) => getQueryEndpoints(id, AppRoutes.PHOTOS),
     }),
-    getTodos: builder.query<TodosType[], void>({
-      query: () => AppRoutes.TODOS,
+    getTodos: builder.query<TodosType[] | TodosType, void | string>({
+      query: (id) => getQueryEndpoints(id, AppRoutes.TODOS),
     }),
-    getUsers: builder.query<UserType[], void>({
-      query: () => AppRoutes.USERS,
+    getUsers: builder.query<UserType[] | UserType, void | string>({
+      query: (id) => getQueryEndpoints(id, AppRoutes.USERS),
     }),
   }),
 });

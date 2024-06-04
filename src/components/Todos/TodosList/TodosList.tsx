@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
 import { AppRoutes } from "@constants/routes";
 import { useGetTodosQuery } from "@redux/api/jsonPlaceholderApi";
+import { Loader } from "@components/Loader/Loader";
 import "./TodosList.scss";
 
 export const TodosList = () => {
-  const { data } = useGetTodosQuery();
+  const { data, isLoading } = useGetTodosQuery();
 
-  return data?.length ? (
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  return Array.isArray(data) ? (
     <ul className="todos-list">
       {data.map(({ id, title }) => (
         <li className="todos-list__item" key={id}>

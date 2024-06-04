@@ -1,14 +1,24 @@
+import { useParams } from "react-router-dom";
+import { useGetTodosQuery } from "@redux/api/jsonPlaceholderApi";
+import { NotFound } from "@pages/NotFound/NotFound";
+import { Loader } from "@components/Loader/Loader";
 import { Card } from "@components/Card/Card";
-import { TodosType } from "./types";
+import { getItemFromEndpoint } from "@utils/getItemFromEndpoint";
 import "./TodosCard.scss";
 
 export const TodosCard = () => {
-  const { title, completed }: TodosType = {
-    userId: 1,
-    id: 1,
-    title: "delectus aut autem",
-    completed: false,
-  };
+  const { id = "" } = useParams();
+  const { data, isLoading } = useGetTodosQuery(id);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (!data) {
+    return <NotFound />;
+  }
+
+  const { title, completed } = getItemFromEndpoint(data);
 
   return (
     <Card>
