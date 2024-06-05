@@ -1,16 +1,9 @@
 import { Link } from "react-router-dom";
 import { AppRoutes } from "@constants/routes";
-import { useGetPhotosQuery } from "@redux/api/jsonPlaceholderApi";
-import { Loader } from "@components/Loader/Loader";
+import { PhotoType } from "../PhotosCard/types";
 import "./PhotosList.scss";
 
-export const PhotosList = () => {
-  const { data, isLoading } = useGetPhotosQuery();
-
-  if (isLoading) {
-    return <Loader />;
-  }
-
+export const PhotosList = ({ data }: { data: PhotoType[] }) => {
   return Array.isArray(data) ? (
     <ul className="photo-list">
       {data.map(({ id, title, thumbnailUrl }) => (

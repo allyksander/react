@@ -1,17 +1,11 @@
 import { Link } from "react-router-dom";
 import { AppRoutes } from "@constants/routes";
-import { useGetCommentsQuery } from "@redux/api/jsonPlaceholderApi";
-import { Loader } from "@components/Loader/Loader";
+import { TitlePlaceholder } from "@components/TitlePlaceholder/TitlePlaceholder";
+import { CommentType } from "../CommentsCard/types";
 import "./CommentsList.scss";
 
-export const CommentsList = () => {
-  const { data, isLoading } = useGetCommentsQuery();
-
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  return Array.isArray(data) ? (
+export const CommentsList = ({ data }: { data: CommentType[] }) =>
+  data.length ? (
     <ul className="comments-list">
       {data.map(({ id, name }) => (
         <li className="comments-list__item" key={id}>
@@ -24,6 +18,5 @@ export const CommentsList = () => {
       ))}
     </ul>
   ) : (
-    <h2>There are no any comments</h2>
+    <TitlePlaceholder text={"There are no any comments"} />
   );
-};

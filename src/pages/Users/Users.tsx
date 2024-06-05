@@ -1,8 +1,8 @@
-import { UsersList } from "@components/Users/UsersList/UsersList";
+import { UsersListWrap } from "@components/Users/UsersListWrap/UsersListWrap";
 
 export const Users = () => (
   <>
     <h1>Users page</h1>
-    <UsersList />
+    <UsersListWrap />
   </>
 );

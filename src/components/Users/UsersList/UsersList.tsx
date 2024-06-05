@@ -1,17 +1,10 @@
 import { Link } from "react-router-dom";
 import { AppRoutes } from "@constants/routes";
-import { useGetUsersQuery } from "@redux/api/jsonPlaceholderApi";
-import { Loader } from "@components/Loader/Loader";
+import { UserType } from "../UsersCard/types";
 import "./UsersList.scss";
 
-export const UsersList = () => {
-  const { data, isLoading } = useGetUsersQuery();
-
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  return Array.isArray(data) ? (
+export const UsersList = ({ data }: { data: UserType[] }) =>
+  data.length ? (
     <ul className="user-list">
       {data.map(({ id, name }) => (
         <li className="user-list__item" key={id}>
@@ -23,7 +16,4 @@ export const UsersList = () => {
         </li>
       ))}
     </ul>
-  ) : (
-    <h2>There are no any users</h2>
-  );
-};
+  ) : null;

@@ -3,7 +3,7 @@ import { AppRoutes } from "@constants/routes";
 import { PostType } from "@components/Posts/PostsCard/types";
 import { CommentType } from "@components/Comments/CommentsCard/types";
 import { AlbumType } from "@components/Albums/AlbumsCard/types";
-import { PhotoType } from "@components/Photos/PhotoCard/types";
+import { PhotoType } from "@components/Photos/PhotosCard/types";
 import { TodosType } from "@components/Todos/TodosCard/types";
 import { UserType } from "@components/Users/UsersCard/types";
 import { getQueryEndpoints } from "@utils/getQueryEndpoints";

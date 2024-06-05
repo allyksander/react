@@ -1,0 +1,41 @@
+@import "@styles/mixins.scss";
+
+.pagination {
+  --button-padding: 8px;
+
+  width: fit-content;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  padding: var(--button-padding) 0;
+
+  @include media-desctop() {
+    --button-padding: 16px;
+  }
+
+  &__item {
+    transition: opacity 0.3s ease-in-out;
+    border: 1px solid transparent;
+    border-radius: 5px;
+
+    &--active {
+      border-color: lightgrey;
+      opacity: 0.5;
+    }
+
+    &--disabled {
+      opacity: 0.5;
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding: var(--button-padding);
+    transition: opacity 0.3s ease-in-out;
+    cursor: pointer;
+
+    @include hover() {
+      opacity: 0.75;
+    }
+  }
+}

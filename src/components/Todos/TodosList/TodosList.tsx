@@ -1,16 +1,9 @@
 import { Link } from "react-router-dom";
 import { AppRoutes } from "@constants/routes";
-import { useGetTodosQuery } from "@redux/api/jsonPlaceholderApi";
-import { Loader } from "@components/Loader/Loader";
+import { TodosType } from "../TodosCard/types";
 import "./TodosList.scss";
 
-export const TodosList = () => {
-  const { data, isLoading } = useGetTodosQuery();
-
-  if (isLoading) {
-    return <Loader />;
-  }
-
+export const TodosList = ({ data }: { data: TodosType[] }) => {
   return Array.isArray(data) ? (
     <ul className="todos-list">
       {data.map(({ id, title }) => (
@@ -23,7 +16,5 @@ export const TodosList = () => {
         </li>
       ))}
     </ul>
-  ) : (
-    <h2>There are no any todos</h2>
-  );
+  ) : null;
 };

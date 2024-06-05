@@ -4,9 +4,9 @@ import { NotFound } from "@pages/NotFound/NotFound";
 import { Card } from "@components/Card/Card";
 import { Loader } from "@components/Loader/Loader";
 import { getItemFromEndpoint } from "@utils/getItemFromEndpoint";
-import "./PhotoCard.scss";
+import "./PhotosCard.scss";
 
-export const PhotoCard = () => {
+export const PhotosCard = () => {
   const { id = "" } = useParams();
   const { data, isLoading } = useGetPhotosQuery(id);
 

@@ -1,8 +1,8 @@
-import { TodosList } from "@components/Todos/TodosList/TodosList";
+import { TodosListWrap } from "@components/Todos/TodosListWrap/TodosListWrap";
 
 export const Todos = () => (
   <>
     <h1>Todos page</h1>
-    <TodosList />
+    <TodosListWrap />
   </>
 );

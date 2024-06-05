@@ -12,7 +12,7 @@ import { BreadingPage } from "@components/BreadingPage/BreadingPage";
 import { PostsCard } from "@components/Posts/PostsCard/PostsCard";
 import { CommentsCard } from "@components/Comments/CommentsCard/CommentsCard";
 import { AlbumsCard } from "@components/Albums/AlbumsCard/AlbumsCard";
-import { PhotoCard } from "@components/Photos/PhotoCard/PhotoCard";
+import { PhotosCard } from "@components/Photos/PhotosCard/PhotosCard";
 import { TodosCard } from "@components/Todos/TodosCard/TodosCard";
 import { UsersCard } from "@components/Users/UsersCard/UsersCard";
 import "./index.scss";
@@ -89,7 +89,7 @@ export const App = (): JSX.Element => (
             <BreadingPage path={AppRoutes.PHOTOS} basePage={<Photos />} />
           }
         >
-          <Route path=":id" element={<PhotoCard />} />
+          <Route path=":id" element={<PhotosCard />} />
         </Route>
         <Route
           path={AppRoutes.TODOS}
