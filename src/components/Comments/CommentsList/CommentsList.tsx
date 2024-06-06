@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { AppRoutes } from "@constants/routes";
-import { TitlePlaceholder } from "@components/TitlePlaceholder/TitlePlaceholder";
 import { CommentType } from "../CommentsCard/types";
 import "./CommentsList.scss";
 
@@ -17,6 +16,4 @@ export const CommentsList = ({ data }: { data: CommentType[] }) =>
         </li>
       ))}
     </ul>
-  ) : (
-    <TitlePlaceholder text={"There are no any comments"} />
-  );
+  ) : null;

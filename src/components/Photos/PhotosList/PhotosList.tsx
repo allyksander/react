@@ -27,7 +27,5 @@ export const PhotosList = ({ data }: { data: PhotoType[] }) => {
         </li>
       ))}
     </ul>
-  ) : (
-    <h2>There are no any photos</h2>
-  );
+  ) : null;
 };
