@@ -3,11 +3,11 @@ import ReactPaginate from "react-paginate";
 import { IPaginatedItems } from "./types";
 import "./PaginatedItems.scss";
 
-export function PaginatedItems<T>({
+export const PaginatedItems = <T,>({
   itemsPerPage = 10,
   data,
   List,
-}: IPaginatedItems<T>) {
+}: IPaginatedItems<T>) => {
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
   const currentItems = data.slice(itemOffset, endOffset);
@@ -45,4 +45,4 @@ export function PaginatedItems<T>({
       )}
     </>
   );
-}
+};
