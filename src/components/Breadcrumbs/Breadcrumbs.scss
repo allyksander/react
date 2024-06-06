@@ -1,0 +1,23 @@
+@import "@styles/mixins.scss";
+
+.breadcrumbs {
+  margin-bottom: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  &__item {
+    display: flex;
+    gap: inherit;
+  }
+
+  &__link {
+    color: inherit;
+    transition: opacity 0.3s ease-in-out;
+    text-decoration: none;
+
+    @include hover() {
+      opacity: 0.75;
+    }
+  }
+}

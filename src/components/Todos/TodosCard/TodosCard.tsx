@@ -3,6 +3,7 @@ import { useGetTodosQuery } from "@redux/api/jsonPlaceholderApi";
 import { NotFound } from "@pages/NotFound/NotFound";
 import { Loader } from "@components/Loader/Loader";
 import { Card } from "@components/Card/Card";
+import { Breadcrumbs } from "@components/Breadcrumbs/Breadcrumbs";
 import { getItemFromEndpoint } from "@utils/getItemFromEndpoint";
 import "./TodosCard.scss";
 
@@ -21,13 +22,16 @@ export const TodosCard = () => {
   const { title, completed } = getItemFromEndpoint(data);
 
   return (
-    <Card>
-      <label>
-        <input type="checkbox" name="" id="" checked={completed} />
-        <h1>{title}</h1>
-      </label>
-      <button>Edit</button>
-      <button>Remove</button>
-    </Card>
+    <>
+      <Breadcrumbs lastItemText={title} />
+      <Card>
+        <label>
+          <input type="checkbox" name="" id="" checked={completed} />
+          <h1>{title}</h1>
+        </label>
+        <button>Edit</button>
+        <button>Remove</button>
+      </Card>
+    </>
   );
 };

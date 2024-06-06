@@ -3,6 +3,7 @@ import { useGetCommentsQuery } from "@redux/api/jsonPlaceholderApi";
 import { NotFound } from "@pages/NotFound/NotFound";
 import { Loader } from "@components/Loader/Loader";
 import { Card } from "@components/Card/Card";
+import { Breadcrumbs } from "@components/Breadcrumbs/Breadcrumbs";
 import { getItemFromEndpoint } from "@utils/getItemFromEndpoint";
 import "./CommentsCard.scss";
 
@@ -21,12 +22,15 @@ export const CommentsCard = () => {
   const { name, email, body } = getItemFromEndpoint(data);
 
   return (
-    <Card>
-      <h1>{name}</h1>
-      <h2>{email}</h2>
-      <h3>{body}</h3>
-      <button>Edit</button>
-      <button>Remove</button>
-    </Card>
+    <>
+      <Breadcrumbs lastItemText={name} />
+      <Card>
+        <h1>{name}</h1>
+        <h2>{email}</h2>
+        <h3>{body}</h3>
+        <button>Edit</button>
+        <button>Remove</button>
+      </Card>
+    </>
   );
 };

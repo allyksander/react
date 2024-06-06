@@ -3,6 +3,8 @@ import { useGetAlbumsQuery } from "@redux/api/jsonPlaceholderApi";
 import { NotFound } from "@pages/NotFound/NotFound";
 import { Loader } from "@components/Loader/Loader";
 import { Card } from "@components/Card/Card";
+import { Breadcrumbs } from "@components/Breadcrumbs/Breadcrumbs";
+import { getItemFromEndpoint } from "@utils/getItemFromEndpoint";
 import "./AlbumsCard.scss";
 
 export const AlbumsCard = () => {
@@ -17,13 +19,16 @@ export const AlbumsCard = () => {
     return <NotFound />;
   }
 
-  const { title } = Array.isArray(data) ? data[0] : data;
+  const { title } = getItemFromEndpoint(data);
 
   return (
-    <Card>
-      <h1>{title}</h1>
-      <button>Edit</button>
-      <button>Remove</button>
-    </Card>
+    <>
+      <Breadcrumbs lastItemText={title} />
+      <Card>
+        <h1>{title}</h1>
+        <button>Edit</button>
+        <button>Remove</button>
+      </Card>
+    </>
   );
 };
