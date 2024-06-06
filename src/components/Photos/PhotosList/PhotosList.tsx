@@ -5,9 +5,9 @@ import "./PhotosList.scss";
 
 export const PhotosList = ({ data }: { data: PhotoType[] }) => {
   return Array.isArray(data) ? (
-    <ul className="photo-list">
+    <ul className="photos-list">
       {data.map(({ id, title, thumbnailUrl }) => (
-        <li className="photo-list__item" key={id}>
+        <li className="photos-list__item" key={id}>
           <Link className="link" to={`${AppRoutes.PHOTOS}/${id}`}>
             <figure>
               <img
