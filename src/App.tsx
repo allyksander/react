@@ -15,12 +15,12 @@ import { Users } from "@pages/Users/Users";
 import { NotFound } from "@pages/NotFound/NotFound";
 import { Layout } from "@components/Layout/Layout";
 import { BreadingPage } from "@components/BreadingPage/BreadingPage";
-import { PostsCard } from "@components/Posts/PostsCard/PostsCard";
-import { CommentsCard } from "@components/Comments/CommentsCard/CommentsCard";
-import { AlbumsCard } from "@components/Albums/AlbumsCard/AlbumsCard";
-import { PhotosCard } from "@components/Photos/PhotosCard/PhotosCard";
-import { TodosCard } from "@components/Todos/TodosCard/TodosCard";
-import { UsersCard } from "@components/Users/UsersCard/UsersCard";
+import { PostsDetail } from "@components/Posts/PostsDetail/PostsDetail";
+import { CommentsDetail } from "@components/Comments/CommentsDetail/CommentsDetail";
+import { AlbumsDetail } from "@components/Albums/AlbumsDetail/AlbumsDetail";
+import { PhotosDetail } from "@components/Photos/PhotosDetail/PhotosDetail";
+import { TodosDetail } from "@components/Todos/TodosDetail/TodosDetail";
+import { UsersDetail } from "@components/Users/UsersDetail/UsersDetail";
 import "./index.scss";
 
 const router = createBrowserRouter(
@@ -45,7 +45,7 @@ const router = createBrowserRouter(
           breadcrumb: "Posts",
         }}
       >
-        <Route path=":id" element={<PostsCard />} />
+        <Route path=":id" element={<PostsDetail />} />
       </Route>
       <Route
         path={AppRoutes.COMMENTS}
@@ -56,7 +56,7 @@ const router = createBrowserRouter(
           breadcrumb: "Comments",
         }}
       >
-        <Route path=":id" element={<CommentsCard />} />
+        <Route path=":id" element={<CommentsDetail />} />
       </Route>
       <Route
         path={AppRoutes.ALBUMS}
@@ -65,7 +65,7 @@ const router = createBrowserRouter(
           breadcrumb: "Albums",
         }}
       >
-        <Route path=":id" element={<AlbumsCard />} />
+        <Route path=":id" element={<AlbumsDetail />} />
       </Route>
       <Route
         path={AppRoutes.PHOTOS}
@@ -74,7 +74,7 @@ const router = createBrowserRouter(
           breadcrumb: "Photos",
         }}
       >
-        <Route path=":id" element={<PhotosCard />} />
+        <Route path=":id" element={<PhotosDetail />} />
       </Route>
       <Route
         path={AppRoutes.TODOS}
@@ -83,7 +83,7 @@ const router = createBrowserRouter(
           breadcrumb: "Todos",
         }}
       >
-        <Route path=":id" element={<TodosCard />} />
+        <Route path=":id" element={<TodosDetail />} />
       </Route>
       <Route
         path={AppRoutes.USERS}
@@ -92,7 +92,7 @@ const router = createBrowserRouter(
           breadcrumb: "Users",
         }}
       >
-        <Route path=":id" element={<UsersCard />} />
+        <Route path=":id" element={<UsersDetail />} />
       </Route>
       <Route path={AppRoutes.NOT_FOUND} element={<NotFound />} />
     </Route>
