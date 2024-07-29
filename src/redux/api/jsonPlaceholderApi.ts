@@ -10,12 +10,27 @@ import { getQueryEndpoints } from "@utils/getQueryEndpoints";
 
 export const jsonPlaceholderApi = createApi({
   reducerPath: "jsonPlaceholderApi",
+  tagTypes: ["Posts"],
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://jsonplaceholder.typicode.com/",
+    baseUrl: "http://localhost:3001/",
   }),
   endpoints: (builder) => ({
     getPosts: builder.query<PostType[] | PostType, void | string>({
       query: (id) => getQueryEndpoints(id, AppRoutes.POSTS),
+      providesTags: (result) =>
+        Array.isArray(result)
+          ? [
+              ...result.map(({ id }) => ({ type: "Posts", id } as const)),
+              { type: "Posts", id: "LIST" },
+            ]
+          : [{ type: "Posts", id: "LIST" }],
+    }),
+    deletePost: builder.mutation<PostType, number>({
+      query: (id) => ({
+        url: `${AppRoutes.POSTS}/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: [{ type: "Posts", id: "LIST" }],
     }),
     getComments: builder.query<CommentType[] | CommentType, void | string>({
       query: (id) => getQueryEndpoints(id, AppRoutes.COMMENTS),
@@ -37,6 +52,7 @@ export const jsonPlaceholderApi = createApi({
 
 export const {
   useGetPostsQuery,
+  useDeletePostMutation,
   useGetCommentsQuery,
   useGetAlbumsQuery,
   useGetPhotosQuery,
