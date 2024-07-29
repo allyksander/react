@@ -1,7 +1,7 @@
 import { CreatePage } from "@components/CreatePage/CreatePage";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { PostType } from "../PostsCard/types";
-import { InputField } from "@components/FormItem/FormItem";
+import { InputField } from "@components/InputField/InputField";
 import { useNavigate } from "react-router-dom";
 import { AppRoutes } from "@constants/routes";
 import { useCreatePostMutation } from "@redux/api/jsonPlaceholderApi";
