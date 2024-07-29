@@ -84,5 +84,61 @@ h6 {
 }
 
 .app-container {
+  display: flex;
+  flex-direction: column;
   padding: var(--app-menu-padding);
+}
+
+.form {
+  display: grid;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  gap: var(--app-menu-padding);
+  padding: var(--app-menu-padding) 0;
+
+  &__item {
+    display: grid;
+    border-color: var(--gray-border);
+    gap: 8px;
+
+    &--error {
+      border-color: red;
+      color: red;
+    }
+  }
+
+  &__item-name {
+    font-weight: bold;
+  }
+
+  &__item-value {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid;
+    border-color: inherit;
+    border-radius: 4px;
+    outline: none;
+
+    &:is(textarea) {
+      height: 100px;
+      resize: none;
+    }
+  }
+
+  &__submit {
+    padding: 8px;
+    font-weight: bold;
+    text-align: center;
+    font-size: inherit;
+    background: none;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+
+    @include hover() {
+      background-color: var(--gray-border);
+      border-color: var(--gray-border);
+    }
+  }
 }

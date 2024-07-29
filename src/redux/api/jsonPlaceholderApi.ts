@@ -32,6 +32,14 @@ export const jsonPlaceholderApi = createApi({
       }),
       invalidatesTags: [{ type: "Posts", id: "LIST" }],
     }),
+    createPost: builder.mutation<PostType, PostType>({
+      query: (data) => ({
+        url: `${AppRoutes.POSTS}`,
+        body: data,
+        method: "POST",
+      }),
+      invalidatesTags: [{ type: "Posts", id: "LIST" }],
+    }),
     getComments: builder.query<CommentType[] | CommentType, void | string>({
       query: (id) => getQueryEndpoints(id, AppRoutes.COMMENTS),
     }),
@@ -53,6 +61,7 @@ export const jsonPlaceholderApi = createApi({
 export const {
   useGetPostsQuery,
   useDeletePostMutation,
+  useCreatePostMutation,
   useGetCommentsQuery,
   useGetAlbumsQuery,
   useGetPhotosQuery,

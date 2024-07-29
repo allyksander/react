@@ -21,6 +21,7 @@ export const PaginatedItems = <T,>({
       <List data={currentItems} />
       {data.length !== currentItems.length && (
         <ReactPaginate
+          initialPage={pageCount - 1}
           breakLabel="..."
           nextLabel=">"
           onPageChange={handlePageClick}
