@@ -14,7 +14,7 @@ export const PostsList = ({ data }: { data: PostType[] }) => {
           <Link className="link" to={`${AppRoutes.POSTS}/${id}`}>
             <h3>{title}</h3>
           </Link>
-          <button>Edit</button>
+          <Link to={`${AppRoutes.POSTS}/edit/${id}`}>Edit</Link>
           <button onClick={() => deletePost(id)}>Remove</button>
         </li>
       ))}

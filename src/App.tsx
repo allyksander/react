@@ -22,6 +22,7 @@ import { PhotosDetail } from "@components/Photos/PhotosDetail/PhotosDetail";
 import { TodosDetail } from "@components/Todos/TodosDetail/TodosDetail";
 import { UsersDetail } from "@components/Users/UsersDetail/UsersDetail";
 import { CreatePost } from "@components/Posts/CreatePost/CreatePost";
+import { EditPost } from "@components/Posts/EditPost/EditPost";
 import "./index.scss";
 
 const router = createBrowserRouter(
@@ -48,6 +49,7 @@ const router = createBrowserRouter(
       >
         <Route path=":id" element={<PostsDetail />} />
         <Route path="create" element={<CreatePost />} />
+        <Route path="edit/:id" element={<EditPost />} />
       </Route>
       <Route
         path={AppRoutes.COMMENTS}
