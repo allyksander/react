@@ -9,8 +9,6 @@ export const PostsDetail = () => {
   const { data, isLoading, isError } = useGetPostsQuery(id);
   const cardData = getItemFromEndpoint(data);
 
-  console.log(id);
-
   return (
     <CardLayout
       isLoading={isLoading}
