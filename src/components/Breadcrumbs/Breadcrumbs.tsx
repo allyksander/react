@@ -25,7 +25,7 @@ export const Breadcrumbs = ({ lastItemText }: { lastItemText?: string }) => {
                   <span className="breadcrumbs__separate">/</span>
                 </>
               ) : (
-                breadcrumbText
+                <span className="breadcrumbs__endpoint">{breadcrumbText}</span>
               )}
             </li>
           );
