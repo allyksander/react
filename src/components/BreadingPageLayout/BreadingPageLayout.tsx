@@ -1,8 +1,7 @@
-import { Loader } from "@components/Loader/Loader";
-import { ErrorPlacehoder } from "@components/ErrorPlacehoder/ErrorPlacehoder";
 import { TitlePlaceholder } from "@components/TitlePlaceholder/TitlePlaceholder";
 import { PaginatedItems } from "@components/PaginatedItems/PaginatedItems";
 import { IPageLayout } from "./types";
+import { LoadingPlaceholder } from "@components/LoadingPlaceholder/LoadingPlaceholder";
 
 export const BreadingPageLayout = <T,>({
   isLoading,
@@ -10,13 +9,7 @@ export const BreadingPageLayout = <T,>({
   data,
   List,
 }: IPageLayout<T>) => {
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  if (isError) {
-    return <ErrorPlacehoder />;
-  }
+  <LoadingPlaceholder isLoading={isLoading} isError={isError} data={data} />;
 
   return Array.isArray(data) ? (
     <PaginatedItems data={data} List={List} />

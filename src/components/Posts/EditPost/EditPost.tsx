@@ -7,8 +7,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { PostType } from "../PostsCard/types";
 import { AppRoutes } from "@constants/routes";
 import { PostFormTemplate } from "../PostFormTemplate/PostFormTemplate";
-import { Loader } from "@components/Loader/Loader";
-import { ErrorPlacehoder } from "@components/ErrorPlacehoder/ErrorPlacehoder";
+import { LoadingPlaceholder } from "@components/LoadingPlaceholder/LoadingPlaceholder";
 
 export const EditPost = () => {
   const { id = "" } = useParams();
@@ -23,14 +22,7 @@ export const EditPost = () => {
       navigate(AppRoutes.POSTS);
     }, 3000);
   };
-
-  if (isLoading) {
-    return <Loader />;
-  }
-
-  if (isError) {
-    return <ErrorPlacehoder />;
-  }
+  <LoadingPlaceholder isLoading={isLoading} isError={isError} data={data} />;
 
   if (data && !Array.isArray(data)) {
     return (
