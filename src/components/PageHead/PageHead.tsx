@@ -1,15 +1,16 @@
 import { Breadcrumbs } from "@components/Breadcrumbs/Breadcrumbs";
 import { Link } from "react-router-dom";
+import "./PageHead.scss";
 
 export const PageHead = ({
   lastBreadcrumbsText,
 }: {
   lastBreadcrumbsText: string | undefined;
 }) => (
-  <>
+  <div className="page-head">
     <Breadcrumbs lastItemText={lastBreadcrumbsText} />
-    <Link to={"../"}>Back to breading page</Link>
-    <br />
-    <br />
-  </>
+    <Link to={"../"} className="page-head__link">
+      Back to breading page
+    </Link>
+  </div>
 );
