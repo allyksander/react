@@ -4,20 +4,16 @@ import {
   useGetPostsQuery,
 } from "@redux/api/jsonPlaceholderApi";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { InputField } from "@components/InputField/InputField";
-import { PageHead } from "@components/PageHead/PageHead";
 import { PostType } from "../PostsCard/types";
 import { AppRoutes } from "@constants/routes";
+import { PostFormTemplate } from "../PostFormTemplate/PostFormTemplate";
+import { Loader } from "@components/Loader/Loader";
+import { ErrorPlacehoder } from "@components/ErrorPlacehoder/ErrorPlacehoder";
 
 export const EditPost = () => {
   const { id = "" } = useParams();
   const { data, isLoading, isError } = useGetPostsQuery(id);
-  const {
-    register,
-    formState: { isSubmitSuccessful, errors },
-    reset,
-    handleSubmit,
-  } = useForm<PostType>();
+  const { reset } = useForm<PostType>();
   const navigate = useNavigate();
   const [editPost] = useEditPostMutation();
   const onSubmit: SubmitHandler<PostType> = async (data) => {
@@ -28,51 +24,24 @@ export const EditPost = () => {
     }, 3000);
   };
 
-  if (isLoading && !data) {
-    return <h1>isLoading</h1>;
+  if (isLoading) {
+    return <Loader />;
   }
 
-  if (isError && !data) {
-    return <h1>isError</h1>;
+  if (isError) {
+    return <ErrorPlacehoder />;
   }
 
   if (data && !Array.isArray(data)) {
     return (
-      <>
-        <PageHead lastBreadcrumbsText="Edit" />
-        {!isSubmitSuccessful ? (
-          <>
-            <h1>Edit post</h1>
-            <form action="" className="form" onSubmit={handleSubmit(onSubmit)}>
-              <InputField
-                tag="input"
-                label="Title"
-                register={register("title", {
-                  value: data.title,
-                  required: true,
-                })}
-                error={errors.title}
-              />
-              <InputField
-                tag="textarea"
-                label="Body"
-                register={register("body", {
-                  value: data.body,
-                  required: true,
-                })}
-                error={errors.body}
-              />
-              <button type="submit" className="form__item-value form__submit">
-                Edit
-              </button>
-            </form>
-          </>
-        ) : (
-          <h3>
-            Post successfully edited. Now you will redirect to list of Posts.
-          </h3>
-        )}
-      </>
+      <PostFormTemplate
+        lastBreadcrumbsText="Edit"
+        pageTitle="Edit post"
+        formData={data}
+        formSubmitHandler={onSubmit}
+        formSubmitButtonText="Edit"
+        submitedFormPlacehoderText="Post successfully edited. Now you will redirect to list of Posts."
+      />
     );
   }
 };
