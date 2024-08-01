@@ -1,17 +1,15 @@
 import { Breadcrumbs } from "@components/Breadcrumbs/Breadcrumbs";
-import { ReactElement } from "react";
 import { Link } from "react-router-dom";
 
-export const EditPage = ({
-  children,
+export const PageHead = ({
+  lastBreadcrumbsText,
 }: {
-  children: ReactElement | ReactElement[];
+  lastBreadcrumbsText: string | undefined;
 }) => (
   <>
-    <Breadcrumbs lastItemText="Edit" />
+    <Breadcrumbs lastItemText={lastBreadcrumbsText} />
     <Link to={"../"}>Back to breading page</Link>
     <br />
     <br />
-    {children}
   </>
 );

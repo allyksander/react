@@ -1,9 +1,8 @@
-import { Link } from "react-router-dom";
 import { NotFound } from "@pages/NotFound/NotFound";
 import { Loader } from "@components/Loader/Loader";
 import { ErrorPlacehoder } from "@components/ErrorPlacehoder/ErrorPlacehoder";
-import { Breadcrumbs } from "@components/Breadcrumbs/Breadcrumbs";
 import { ICardLayout } from "./type";
+import { PageHead } from "@components/PageHead/PageHead";
 
 export const CardLayout = <T extends { id: number }>({
   isLoading,
@@ -27,10 +26,7 @@ export const CardLayout = <T extends { id: number }>({
   return (
     !Array.isArray(data) && (
       <div className="card">
-        <Breadcrumbs lastItemText={breadcrumbsText} />
-        <Link to={"../"}>Back to breading page</Link>
-        <br />
-        <br />
+        <PageHead lastBreadcrumbsText={breadcrumbsText} />
         <Card data={data} />
       </div>
     )

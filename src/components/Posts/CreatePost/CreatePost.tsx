@@ -1,8 +1,8 @@
-import { CreatePage } from "@components/CreatePage/CreatePage";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { PostType } from "../PostsCard/types";
-import { InputField } from "@components/InputField/InputField";
 import { useNavigate } from "react-router-dom";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { InputField } from "@components/InputField/InputField";
+import { PageHead } from "@components/PageHead/PageHead";
+import { PostType } from "../PostsCard/types";
 import { AppRoutes } from "@constants/routes";
 import { useCreatePostMutation } from "@redux/api/jsonPlaceholderApi";
 
@@ -24,7 +24,8 @@ export const CreatePost = () => {
   };
 
   return (
-    <CreatePage>
+    <>
+      <PageHead lastBreadcrumbsText="Create" />
       {!isSubmitSuccessful ? (
         <>
           <h1>Create Post</h1>
@@ -51,6 +52,6 @@ export const CreatePost = () => {
           Post successfully created. Now you will redirect to list of Posts.
         </h3>
       )}
-    </CreatePage>
+    </>
   );
 };

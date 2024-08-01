@@ -3,11 +3,11 @@ import {
   useEditPostMutation,
   useGetPostsQuery,
 } from "@redux/api/jsonPlaceholderApi";
-import { EditPage } from "@components/EditPage/EditPage";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { InputField } from "@components/InputField/InputField";
+import { PageHead } from "@components/PageHead/PageHead";
 import { PostType } from "../PostsCard/types";
 import { AppRoutes } from "@constants/routes";
-import { InputField } from "@components/InputField/InputField";
 
 export const EditPost = () => {
   const { id = "" } = useParams();
@@ -38,10 +38,11 @@ export const EditPost = () => {
 
   if (data && !Array.isArray(data)) {
     return (
-      <EditPage>
-        <h1>Edit post</h1>
+      <>
+        <PageHead lastBreadcrumbsText="Edit" />
         {!isSubmitSuccessful ? (
           <>
+            <h1>Edit post</h1>
             <form action="" className="form" onSubmit={handleSubmit(onSubmit)}>
               <InputField
                 tag="input"
@@ -71,7 +72,7 @@ export const EditPost = () => {
             Post successfully edited. Now you will redirect to list of Posts.
           </h3>
         )}
-      </EditPage>
+      </>
     );
   }
 };
