@@ -2,7 +2,6 @@ import { PageHead } from "@components/PageHead/PageHead";
 import { IFormPageLayout } from "./types";
 
 export const FormPageLayout = ({
-  lastBreadcrumbsText,
   pageTitle,
   isSubmitSuccessful,
   submitedFormPlacehoderText,
@@ -10,7 +9,7 @@ export const FormPageLayout = ({
 }: IFormPageLayout) => {
   return (
     <>
-      <PageHead lastBreadcrumbsText={lastBreadcrumbsText} />
+      <PageHead />
       {!isSubmitSuccessful ? (
         <>
           <h1>{pageTitle}</h1>

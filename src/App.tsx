@@ -48,8 +48,20 @@ const router = createBrowserRouter(
         }}
       >
         <Route path=":id" element={<PostsDetail />} />
-        <Route path="create" element={<CreatePost />} />
-        <Route path="edit/:id" element={<EditPost />} />
+        <Route
+          path="create"
+          handle={{
+            breadcrumb: "Create",
+          }}
+          element={<CreatePost />}
+        />
+        <Route
+          path="edit/:id"
+          handle={{
+            breadcrumb: "Edit",
+          }}
+          element={<EditPost />}
+        />
       </Route>
       <Route
         path={AppRoutes.COMMENTS}

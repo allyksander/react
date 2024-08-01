@@ -19,7 +19,6 @@ export const CreatePost = () => {
 
   return (
     <PostFormTemplate
-      lastBreadcrumbsText="Create"
       pageTitle="Create post"
       formSubmitHandler={onSubmit}
       formSubmitButtonText="Create"

@@ -5,7 +5,7 @@ import "./PageHead.scss";
 export const PageHead = ({
   lastBreadcrumbsText,
 }: {
-  lastBreadcrumbsText: string | undefined;
+  lastBreadcrumbsText?: string;
 }) => (
   <div className="page-head">
     <Breadcrumbs lastItemText={lastBreadcrumbsText} />

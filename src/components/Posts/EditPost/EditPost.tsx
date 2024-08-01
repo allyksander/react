@@ -27,7 +27,6 @@ export const EditPost = () => {
   if (data && !Array.isArray(data)) {
     return (
       <PostFormTemplate
-        lastBreadcrumbsText="Edit"
         pageTitle="Edit post"
         formData={data}
         formSubmitHandler={onSubmit}

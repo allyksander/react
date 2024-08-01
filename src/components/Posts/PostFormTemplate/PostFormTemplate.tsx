@@ -5,7 +5,6 @@ import { IPostFormTemplate } from "./types";
 import { FormPageLayout } from "@components/FormPageLayout/FormPageLayout";
 
 export const PostFormTemplate = ({
-  lastBreadcrumbsText,
   pageTitle,
   formData,
   formSubmitHandler,
@@ -20,7 +19,6 @@ export const PostFormTemplate = ({
 
   return (
     <FormPageLayout
-      lastBreadcrumbsText={lastBreadcrumbsText}
       pageTitle={pageTitle}
       isSubmitSuccessful={isSubmitSuccessful}
       submitedFormPlacehoderText={submitedFormPlacehoderText}
