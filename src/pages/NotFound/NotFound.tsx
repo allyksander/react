@@ -1,11 +1,12 @@
 import { AppRoutes } from "@constants/routes";
 import { Link } from "react-router-dom";
+import "./NotFound.scss";
 
 export const NotFound = () => (
-  <>
-    <span>NotFound page</span>
-    <br />
-    <br />
-    <Link to={AppRoutes.MAIN}>Go to Main page</Link>
-  </>
+  <div className="not-found">
+    <h1>Sorry, we can't find this page...</h1>
+    <Link to={AppRoutes.MAIN} className="not-found__link">
+      Go to Main page
+    </Link>
+  </div>
 );

@@ -1,0 +1,18 @@
+@import "@styles/mixins.scss";
+
+.not-found {
+  min-height: 100%;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+
+  &__link {
+    color: inherit;
+    transition: opacity 0.3s ease-in-out;
+
+    @include hover {
+      opacity: 0.5;
+    }
+  }
+}
