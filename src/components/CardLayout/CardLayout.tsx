@@ -1,6 +1,6 @@
+import { LoadingLayout } from "@components/LoadingLayout/LoadingLayout";
 import { ICardLayout } from "./type";
 import { PageHead } from "@components/PageHead/PageHead";
-import { LoadingPlaceholder } from "@components/LoadingPlaceholder/LoadingPlaceholder";
 
 export const CardLayout = <T extends { id: number }>({
   isLoading,
@@ -8,15 +8,13 @@ export const CardLayout = <T extends { id: number }>({
   data,
   Card,
   breadcrumbsText,
-}: ICardLayout<T>) => {
-  <LoadingPlaceholder isLoading={isLoading} isError={isError} data={data} />;
-
-  if (data && !Array.isArray(data)) {
-    return (
+}: ICardLayout<T>) => (
+  <LoadingLayout isLoading={isLoading} isError={isError} data={data}>
+    {data && !Array.isArray(data) && (
       <div className="card">
         <PageHead lastBreadcrumbsText={breadcrumbsText} />
         <Card data={data} />
       </div>
-    );
-  }
-};
+    )}
+  </LoadingLayout>
+);

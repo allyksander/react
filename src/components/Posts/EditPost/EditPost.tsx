@@ -7,7 +7,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { PostType } from "../PostsCard/types";
 import { AppRoutes } from "@constants/routes";
 import { PostFormTemplate } from "../PostFormTemplate/PostFormTemplate";
-import { LoadingPlaceholder } from "@components/LoadingPlaceholder/LoadingPlaceholder";
+import { LoadingLayout } from "@components/LoadingLayout/LoadingLayout";
 
 export const EditPost = () => {
   const { id = "" } = useParams();
@@ -22,17 +22,18 @@ export const EditPost = () => {
       navigate(AppRoutes.POSTS);
     }, 3000);
   };
-  <LoadingPlaceholder isLoading={isLoading} isError={isError} data={data} />;
 
-  if (data && !Array.isArray(data)) {
-    return (
-      <PostFormTemplate
-        pageTitle="Edit post"
-        formData={data}
-        formSubmitHandler={onSubmit}
-        formSubmitButtonText="Edit"
-        submitedFormPlacehoderText="Post successfully edited. Now you will redirect to list of Posts."
-      />
-    );
-  }
+  return (
+    <LoadingLayout isLoading={isLoading} isError={isError} data={data}>
+      {data && !Array.isArray(data) && (
+        <PostFormTemplate
+          pageTitle="Edit post"
+          formData={data}
+          formSubmitHandler={onSubmit}
+          formSubmitButtonText="Edit"
+          submitedFormPlacehoderText="Post successfully edited. Now you will redirect to list of Posts."
+        />
+      )}
+    </LoadingLayout>
+  );
 };
