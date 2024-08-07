@@ -6,7 +6,7 @@ import { AlbumType } from "./components/AlbumsCard/types";
 const albumsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAlbums: builder.query<AlbumType[] | AlbumType, void | string>({
-      query: (id) => getQueryEndpoints(id, AppRoutes.ALBUMS),
+      query: (id) => getQueryEndpoints(id, AppRoutes.albums.path),
     }),
   }),
   overrideExisting: false,

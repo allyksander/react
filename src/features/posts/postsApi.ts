@@ -3,10 +3,12 @@ import { AppRoutes } from "@constants/routes";
 import { PostType } from "./components/PostsCard/types";
 import { getQueryEndpoints } from "@utils/getQueryEndpoints";
 
+const postPath = AppRoutes.posts.path;
+
 export const postsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getPosts: builder.query<PostType[] | PostType, void | string>({
-      query: (id) => getQueryEndpoints(id, AppRoutes.POSTS),
+      query: (id) => getQueryEndpoints(id, postPath),
       providesTags: (result) =>
         Array.isArray(result)
           ? [
@@ -17,14 +19,14 @@ export const postsApi = baseApi.injectEndpoints({
     }),
     deletePost: builder.mutation<PostType, number>({
       query: (id) => ({
-        url: `${AppRoutes.POSTS}/${id}`,
+        url: `${postPath}/${id}`,
         method: "DELETE",
       }),
       invalidatesTags: [{ type: "Posts", id: "LIST" }],
     }),
     createPost: builder.mutation<PostType, PostType>({
       query: (data) => ({
-        url: `${AppRoutes.POSTS}`,
+        url: `${postPath}`,
         body: data,
         method: "POST",
       }),
@@ -35,7 +37,7 @@ export const postsApi = baseApi.injectEndpoints({
       Pick<PostType, "id" | "title" | "body">
     >({
       query: ({ id, title, body }) => ({
-        url: `${AppRoutes.POSTS}/${id}`,
+        url: `${postPath}/${id}`,
         body: { title, body },
         method: "PATCH",
       }),

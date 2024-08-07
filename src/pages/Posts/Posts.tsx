@@ -8,6 +8,6 @@ export const Posts = () => (
     <Breadcrumbs />
     <h1>Posts page</h1>
     <PostsListWrap />
-    <CreateButton baseRoute={AppRoutes.POSTS} text="Create Post" />
+    <CreateButton baseRoute={AppRoutes.posts.path} text="Create Post" />
   </>
 );

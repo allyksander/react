@@ -19,7 +19,7 @@ export const EditPost = () => {
     editPost({ ...data, id: +id });
     reset();
     setTimeout(() => {
-      navigate(AppRoutes.POSTS);
+      navigate(AppRoutes.posts.path);
     }, 3000);
   };
 

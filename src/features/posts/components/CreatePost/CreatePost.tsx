@@ -13,7 +13,7 @@ export const CreatePost = () => {
     await addPost({ ...data, userId: 1, id: Date.now() });
     reset();
     setTimeout(() => {
-      navigate(AppRoutes.POSTS);
+      navigate(AppRoutes.posts.path);
     }, 3000);
   };
 

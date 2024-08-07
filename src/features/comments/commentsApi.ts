@@ -6,7 +6,7 @@ import { CommentType } from "./components/CommentsCard/types";
 const commentsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getComments: builder.query<CommentType[] | CommentType, void | string>({
-      query: (id) => getQueryEndpoints(id, AppRoutes.COMMENTS),
+      query: (id) => getQueryEndpoints(id, AppRoutes.comments.path),
     }),
   }),
   overrideExisting: false,

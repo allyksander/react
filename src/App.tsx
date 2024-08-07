@@ -30,89 +30,102 @@ const router = createBrowserRouter(
     <Route
       element={<Layout />}
       handle={{
-        breadcrumb: "Main",
+        breadcrumb: AppRoutes.main.text,
       }}
     >
       <Route
-        path={AppRoutes.MAIN}
+        path={AppRoutes.main.path}
         element={<Main />}
         handle={{
-          breadcrumb: "Main",
+          breadcrumb: AppRoutes.main.text,
         }}
       />
       <Route
-        path={AppRoutes.POSTS}
-        element={<BreadingPage path={AppRoutes.POSTS} basePage={<Posts />} />}
+        path={AppRoutes.posts.path}
+        element={
+          <BreadingPage path={AppRoutes.posts.path} basePage={<Posts />} />
+        }
         handle={{
-          breadcrumb: "Posts",
+          breadcrumb: AppRoutes.posts.text,
         }}
       >
         <Route path=":id" element={<PostsDetail />} />
         <Route
-          path="create"
+          path={AppRoutes.create.path}
           handle={{
-            breadcrumb: "Create",
+            breadcrumb: AppRoutes.create.text,
           }}
           element={<CreatePost />}
         />
         <Route
-          path="edit/:id"
+          path={`${AppRoutes.edit.path}/:id`}
           handle={{
-            breadcrumb: "Edit",
+            breadcrumb: AppRoutes.edit.path,
           }}
           element={<EditPost />}
         />
       </Route>
       <Route
-        path={AppRoutes.COMMENTS}
+        path={AppRoutes.comments.path}
         element={
-          <BreadingPage path={AppRoutes.COMMENTS} basePage={<Comments />} />
+          <BreadingPage
+            path={AppRoutes.comments.text}
+            basePage={<Comments />}
+          />
         }
         handle={{
-          breadcrumb: "Comments",
+          breadcrumb: AppRoutes.comments.text,
         }}
       >
         <Route path=":id" element={<CommentsDetail />} />
       </Route>
       <Route
-        path={AppRoutes.ALBUMS}
-        element={<BreadingPage path={AppRoutes.ALBUMS} basePage={<Albums />} />}
+        path={AppRoutes.albums.path}
+        element={
+          <BreadingPage path={AppRoutes.albums.text} basePage={<Albums />} />
+        }
         handle={{
-          breadcrumb: "Albums",
+          breadcrumb: AppRoutes.albums.text,
         }}
       >
         <Route path=":id" element={<AlbumsDetail />} />
       </Route>
       <Route
-        path={AppRoutes.PHOTOS}
-        element={<BreadingPage path={AppRoutes.PHOTOS} basePage={<Photos />} />}
+        path={AppRoutes.photos.path}
+        element={
+          <BreadingPage path={AppRoutes.photos.text} basePage={<Photos />} />
+        }
         handle={{
-          breadcrumb: "Photos",
+          breadcrumb: AppRoutes.photos.text,
         }}
       >
         <Route path=":id" element={<PhotosDetail />} />
       </Route>
       <Route
-        path={AppRoutes.TODOS}
-        element={<BreadingPage path={AppRoutes.TODOS} basePage={<Todos />} />}
+        path={AppRoutes.todos.path}
+        element={
+          <BreadingPage path={AppRoutes.todos.text} basePage={<Todos />} />
+        }
         handle={{
-          breadcrumb: "Todos",
+          breadcrumb: AppRoutes.todos.text,
         }}
       >
         <Route path=":id" element={<TodosDetail />} />
       </Route>
       <Route
-        path={AppRoutes.USERS}
-        element={<BreadingPage path={AppRoutes.USERS} basePage={<Users />} />}
+        path={AppRoutes.users.path}
+        element={
+          <BreadingPage path={AppRoutes.users.text} basePage={<Users />} />
+        }
         handle={{
-          breadcrumb: "Users",
+          breadcrumb: AppRoutes.users.text,
         }}
       >
         <Route path=":id" element={<UsersDetail />} />
       </Route>
-      <Route path={AppRoutes.NOT_FOUND} element={<NotFound />} />
+      <Route path={AppRoutes.notFound.path} element={<NotFound />} />
     </Route>
   )
 );
 
-export const App = (): JSX.Element => <RouterProvider router={router} />;
+export const App = () => <RouterProvider router={router} />;

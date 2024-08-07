@@ -23,7 +23,7 @@ export const LoadingLayout = <T,>({
     return (
       <>
         <ErrorPlacehoder />
-        <Link to={AppRoutes.MAIN}>Go to Main page</Link>
+        <Link to={AppRoutes.main.path}>Go to Main page</Link>
       </>
     );
   }

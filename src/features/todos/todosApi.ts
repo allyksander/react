@@ -6,7 +6,7 @@ import { TodosType } from "./components/TodosCard/types";
 const albumsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getTodos: builder.query<TodosType[] | TodosType, void | string>({
-      query: (id) => getQueryEndpoints(id, AppRoutes.TODOS),
+      query: (id) => getQueryEndpoints(id, AppRoutes.todos.path),
     }),
   }),
   overrideExisting: false,

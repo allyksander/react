@@ -6,7 +6,7 @@ import { PhotoType } from "./components/PhotosCard/types";
 const albumsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getPhotos: builder.query<PhotoType[] | PhotoType, void | string>({
-      query: (id) => getQueryEndpoints(id, AppRoutes.PHOTOS),
+      query: (id) => getQueryEndpoints(id, AppRoutes.photos.path),
     }),
   }),
   overrideExisting: false,

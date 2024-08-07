@@ -4,6 +4,8 @@ import { useDeletePostMutation } from "@features/posts/postsApi";
 import { ListCardLayout } from "@components/ListCardLayout/ListCardLayout";
 import "./PostsList.scss";
 
+const path = AppRoutes.posts.path;
+
 export const PostsList = ({ data }: { data: PostType[] }) => {
   const [deletePost] = useDeletePostMutation();
 
@@ -12,8 +14,8 @@ export const PostsList = ({ data }: { data: PostType[] }) => {
       {data.map(({ id, title }) => (
         <li className="posts-list__item" key={id}>
           <ListCardLayout
-            cardLink={`${AppRoutes.POSTS}/${id}`}
-            editLink={`${AppRoutes.POSTS}/edit/${id}`}
+            cardLink={`${path}/${id}`}
+            editLink={`${path}/${AppRoutes.edit.path}/${id}`}
             removeHandler={() => deletePost(id)}
           >
             <h3>{title}</h3>

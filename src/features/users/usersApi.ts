@@ -6,7 +6,7 @@ import { UserType } from "./components/UsersCard/types";
 const usersApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getUsers: builder.query<UserType[] | UserType, void | string>({
-      query: (id) => getQueryEndpoints(id, AppRoutes.USERS),
+      query: (id) => getQueryEndpoints(id, AppRoutes.users.path),
     }),
   }),
   overrideExisting: false,
