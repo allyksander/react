@@ -1,5 +1,5 @@
 import { Breadcrumbs } from "@components/Breadcrumbs/Breadcrumbs";
-import { CommentsListWrap } from "@components/Comments/CommentsListWrap/CommentsListWrap";
+import { CommentsListWrap } from "@features/comments/components/CommentsListWrap/CommentsListWrap";
 
 export const Comments = () => (
   <>

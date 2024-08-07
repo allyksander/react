@@ -15,14 +15,14 @@ import { Users } from "@pages/Users/Users";
 import { NotFound } from "@pages/NotFound/NotFound";
 import { Layout } from "@components/Layout/Layout";
 import { BreadingPage } from "@components/BreadingPage/BreadingPage";
-import { PostsDetail } from "@components/Posts/PostsDetail/PostsDetail";
-import { CommentsDetail } from "@components/Comments/CommentsDetail/CommentsDetail";
-import { AlbumsDetail } from "@components/Albums/AlbumsDetail/AlbumsDetail";
-import { PhotosDetail } from "@components/Photos/PhotosDetail/PhotosDetail";
-import { TodosDetail } from "@components/Todos/TodosDetail/TodosDetail";
-import { UsersDetail } from "@components/Users/UsersDetail/UsersDetail";
-import { CreatePost } from "@components/Posts/CreatePost/CreatePost";
-import { EditPost } from "@components/Posts/EditPost/EditPost";
+import { PostsDetail } from "@features/posts/components/PostsDetail/PostsDetail";
+import { CreatePost } from "@features/posts/components/CreatePost/CreatePost";
+import { EditPost } from "@features/posts/components/EditPost/EditPost";
+import { CommentsDetail } from "@features/comments/components/CommentsDetail/CommentsDetail";
+import { AlbumsDetail } from "@features/albums/components/AlbumsDetail/AlbumsDetail";
+import { PhotosDetail } from "@features/photos/components/PhotosDetail/PhotosDetail";
+import { TodosDetail } from "@features/todos/components/TodosDetail/TodosDetail";
+import { UsersDetail } from "@features/users/components/UsersDetail/UsersDetail";
 import "./index.scss";
 
 const router = createBrowserRouter(

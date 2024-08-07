@@ -1,5 +1,5 @@
 import { Breadcrumbs } from "@components/Breadcrumbs/Breadcrumbs";
-import { PhotosListWrap } from "@components/Photos/PhotosListWrap/PhotosListWrap";
+import { PhotosListWrap } from "@features/photos/components/PhotosListWrap/PhotosListWrap";
 
 export const Photos = () => (
   <>

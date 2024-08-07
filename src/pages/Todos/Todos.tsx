@@ -1,5 +1,5 @@
 import { Breadcrumbs } from "@components/Breadcrumbs/Breadcrumbs";
-import { TodosListWrap } from "@components/Todos/TodosListWrap/TodosListWrap";
+import { TodosListWrap } from "@features/todos/components/TodosListWrap/TodosListWrap";
 
 export const Todos = () => (
   <>

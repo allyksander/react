@@ -1,5 +1,5 @@
-import { AlbumsListWrap } from "@components/Albums/AlbumsListWrap/AlbumsListWrap";
 import { Breadcrumbs } from "@components/Breadcrumbs/Breadcrumbs";
+import { AlbumsListWrap } from "@features/albums/components/AlbumsListWrap/AlbumsListWrap";
 
 export const Albums = () => (
   <>

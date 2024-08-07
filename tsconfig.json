@@ -14,7 +14,8 @@
       "@pages/*": ["src/pages/*"],
       "@styles/*": ["src/styles/*"],
       "@redux/*": ["src/redux/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@features/*": ["src/features/*"]
     },
 
     /* Bundler mode */

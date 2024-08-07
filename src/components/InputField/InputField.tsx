@@ -1,4 +1,4 @@
-import { IInputField } from "@components/Posts/CreatePost/type";
+import { IInputField } from "./types";
 import "./InputField.scss";
 
 export const InputField = ({ tag, label, error, register }: IInputField) => {
