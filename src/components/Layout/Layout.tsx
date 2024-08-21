@@ -6,7 +6,7 @@ export const Layout = () => (
     <nav className="app-menu">
       <ul className="app-menu__list">
         {AppMenu.map(({ path, text }) => (
-          <li className="app-menu__item">
+          <li className="app-menu__item" key={`${path}-${text}`}>
             <NavLink to={path} className="app-menu__link">
               {text}
             </NavLink>
